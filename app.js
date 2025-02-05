@@ -46,4 +46,10 @@ app.get("/", async (req, res) => {
 app.use("/user", userRoute);
 app.use("/blog", blogRoute);
 
-app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));
+// app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));
+}
+
